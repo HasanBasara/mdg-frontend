@@ -1,6 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 
+// API base url ayarı
+axios.defaults.baseURL = 'https://localhost:7212/';
+
 const AuthContext = createContext();
 
 export const useAuth = () => useContext(AuthContext);
@@ -56,7 +59,7 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post('/api/auth/register', userData);
       return response.data;
     } catch (error) {
-      throw error;
+      throw console.error('Register error:', error);
     }
   };
 

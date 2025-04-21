@@ -5,7 +5,6 @@ import './App.css';
 import 'antd/dist/reset.css';
 
 import MainLayout from './layouts/MainLayout';
-import AuthLayout from './layouts/AuthLayout';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -25,13 +24,8 @@ const App = () => {
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<Login />} />
-      
-      {/* Auth Routes */}
-      <Route element={<AuthLayout />}>
-        <Route path="/login" element={!currentUser ? <Login /> : <Navigate to="/dashboard" />} />
-        <Route path="/register" element={!currentUser ? <Register /> : <Navigate to="/dashboard" />} />
-      </Route>
-      
+      <Route path="/login" element={!currentUser ? <Login /> : <Navigate to="/dashboard" />} />
+      <Route path="/register" element={!currentUser ? <Register /> : <Navigate to="/dashboard" />} />
       {/* Protected Routes */}
       <Route element={<MainLayout />}>
         <Route 
